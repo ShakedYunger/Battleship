@@ -1,0 +1,31 @@
+#boards {
+  margin-top: 4em;
+  display: grid;
+  place-items: center;
+  min-width: 450px;
+  min-height: 450px;
+}
+
+td {
+  height: 35px;
+  width: 35px;
+  text-align: center;
+}
+
+#myBoard td {
+  background-color: rgba(92, 73, 48, 0.623);
+}
+
+#opponentsBoard td {
+  background-color: white;
+  cursor: pointer;
+}
+
+#opponentsBoard #hit {
+  background-color: rgb(125, 126, 123);
+  /* font-size: 8em; */
+}
+
+#opponentsBoard #notHit {
+  background-color: red;
+}

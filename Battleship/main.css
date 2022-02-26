@@ -1,0 +1,22 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: gotham rounded, sans-serif;
+}
+
+body {
+  background-color: aqua;
+}
+
+#modal {
+  background-color: rgba(0, 0, 0, 0.419);
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  display: grid;
+  place-items: center;
+  font-size: 4em;
+}

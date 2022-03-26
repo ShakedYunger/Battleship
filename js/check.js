@@ -58,9 +58,7 @@ function ifCellInhabitHorizontal(len, shipId, clickedCell) {
 
     for (let index = 1; index < len; index++) {
       let letters = LETTERS.indexOf(letterIndex + index);
-      let cellIndex = document.querySelectorAll(
-        "#" + LETTERS[letterIndex] + num
-      );
+      let cellIndex = document.querySelectorAll("#" + LETTERS[letterIndex] + num);
 
       // console.log(index);
       if (cellIndex[0] !== undefined) {

@@ -8,9 +8,7 @@ const battleships = null;
 
 function setClickToships() {
   let shipsNodeList = document.querySelectorAll(".ship");
-  shipsNodeList.forEach((element) =>
-    element.addEventListener("click", returnLen)
-  );
+  shipsNodeList.forEach((element) => element.addEventListener("click", returnLen));
 }
 
 function returnLen() {
@@ -105,8 +103,7 @@ function placeVerticaly(clickedCell, len, color, shipId) {
     cellIndex[1].style.backgroundColor = color;
   }
 
-  document.querySelectorAll("#" + clickedCell.id)[0].className =
-    "myGuessinShipSpot";
+  document.querySelectorAll("#" + clickedCell.id)[0].className = "myGuessinShipSpot";
   clickedCell.style.backgroundColor = color;
   clickedCell.className = "myShipSpot";
 }
@@ -126,8 +123,7 @@ function placeHorizontaly(clickedCell, len, color, shipId) {
     cellIndex[1].className = "myShipSpot";
     cellIndex[1].style.backgroundColor = color;
   }
-  document.querySelectorAll("#" + clickedCell.id)[0].className =
-    "myGuessinShipSpot";
+  document.querySelectorAll("#" + clickedCell.id)[0].className = "myGuessinShipSpot";
   clickedCell.style.backgroundColor = color;
   clickedCell.className = "myShipSpot";
 }

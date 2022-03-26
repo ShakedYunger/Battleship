@@ -15,7 +15,6 @@ function setClickToships() {
 
 function returnLen() {
   if (this.id === "twoLenShip") {
-    console.log(1);
     ShipLen = 2;
     return 2;
   } else if (this.id === "threeLenShip") {
@@ -57,14 +56,22 @@ function setAttributesToMyCell(elMyBoard) {
 }
 
 function returnCellId() {
-  if (ShipLen === 2) {
-    placeShipsOnBoard(this, 2, "#twoLenShip", "rgb(187, 6, 6)");
-  } else if (ShipLen === 3) {
-    placeShipsOnBoard(this, 3, "#threeLenShip", "rgb(121, 39, 214)");
-  } else if (ShipLen === 4) {
-    placeShipsOnBoard(this, 4, "#fourLenShip", "rgb(52, 192, 39)");
-  } else if (ShipLen === 5) {
-    placeShipsOnBoard(this, 5, "#fiveLenShip", "rgb(154, 184, 23)");
+  switch (ShipLen) {
+    case 2:
+      placeShipsOnBoard(this, 2, "#twoLenShip", "rgb(187, 6, 6)");
+      break;
+    case 3:
+      placeShipsOnBoard(this, 3, "#threeLenShip", "rgb(121, 39, 214)");
+      break;
+    case 4:
+      placeShipsOnBoard(this, 4, "#fourLenShip", "rgb(52, 192, 39)");
+      break;
+    case 5:
+      placeShipsOnBoard(this, 5, "#fiveLenShip", "rgb(154, 184, 23)");
+      break;
+
+    default:
+      break;
   }
   createReadyButton();
 }
@@ -73,12 +80,12 @@ function placeShipsOnBoard(clickedCell, len, shipId, color) {
   shipSpot = clickedCell.id;
   if (
     direction === "vertical" &&
-    ifCellInhabitVer(len, shipId, clickedCell) === true
+    ifCellInhabitVertical(len, shipId, clickedCell) === true
   ) {
     placeVerticaly(clickedCell, len, color, shipId);
   } else if (
     direction === "horizontal" &&
-    ifCellInhabitHor(len, shipId, clickedCell) === true
+    ifCellInhabitHorizontal(len, shipId, clickedCell) === true
   ) {
     placeHorizontaly(clickedCell, len, color, shipId);
   }

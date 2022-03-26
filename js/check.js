@@ -24,7 +24,7 @@ function checkIfSpot() {
   }
 }
 
-function ifCellInhabitVer(len, shipId, clickedCell) {
+function ifCellInhabitVertical(len, shipId, clickedCell) {
   let ship = document.querySelector(shipId);
   if (
     Number(shipSpot.slice(1, 3)) < 14 - len &&
@@ -46,10 +46,10 @@ function ifCellInhabitVer(len, shipId, clickedCell) {
   }
 }
 
-function ifCellInhabitHor(len, shipId, clickedCell) {
+function ifCellInhabitHorizontal(len, shipId, clickedCell) {
   let ship = document.querySelector(shipId);
   if (
-    Number(shipSpot.slice(1, 3)) < 14 - len &&
+    Number(clickedCell.slice(1, 3)) < 14 - len &&
     ship !== null &&
     clickedCell.className === ""
   ) {
@@ -72,13 +72,6 @@ function ifCellInhabitHor(len, shipId, clickedCell) {
         console.log(index);
         return false;
       }
-      // if (cellIndex[0] !== undefined) {
-      //   if (cellIndex[0].className !== "") {
-      //     return false;
-      //   } else {
-      //     return true;
-      //   }
-      // }
     }
     return true;
   }

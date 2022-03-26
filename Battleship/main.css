@@ -18,5 +18,34 @@ body {
   position: fixed;
   display: grid;
   place-items: center;
+  color: rgb(0, 0, 0);
   font-size: 4em;
+}
+
+.battleships,
+#readyButton {
+  position: absolute;
+  left: 0%;
+  top: 43.5%;
+  margin: 20px;
+}
+
+#readyButton {
+  position: absolute;
+  font-size: 2em;
+  border-radius: 25%;
+  width: 150px;
+  height: 100px;
+  background-color: rgb(20, 216, 20);
+  display: grid;
+  place-items: center;
+}
+
+#turnButton {
+  cursor: pointer;
+  position: absolute;
+  height: 200px;
+  width: 230px;
+  right: 0;
+  top: 0;
 }

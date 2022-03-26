@@ -2,7 +2,8 @@
 
 let SIZE = 13;
 let myBoard = null;
-let opponentsBoard = null;
+let myGuessinBoard = null;
+let shipSpot = null;
 const LETTERS = [
   null,
   "A",
@@ -20,6 +21,7 @@ const LETTERS = [
 ];
 
 let NUMBERS = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+let direction = "vertical";
 
 function createBoard() {
   let board = [];
@@ -29,7 +31,7 @@ function createBoard() {
       namingCell(row, col);
     }
     myBoard = board;
-    opponentsBoard = board;
+    myGuessinBoard = board;
   }
 
   function namingCell(row, col) {
@@ -44,41 +46,28 @@ function createBoard() {
 }
 
 function createElBoard() {
+  createBoard();
   let elMyBoard = document.getElementById("myBoard");
-  let elOpponentsBoard = document.getElementById("opponentsBoard");
+  let elMyGuessingBoard = document.getElementById("myGuessinBoard");
 
   for (let row = 0; row < SIZE; row++) {
     var myTr = document.createElement("tr");
-    var opponentsTr = document.createElement("tr");
+    var myGuessinTr = document.createElement("tr");
 
     for (let col = 0; col < SIZE; col++) {
       let myCell = document.createElement("td");
-      let opponentsCell = document.createElement("td");
+      let myGuessinCell = document.createElement("td");
 
       myTr.appendChild(myCell);
-      opponentsTr.appendChild(opponentsCell);
+      myGuessinTr.appendChild(myGuessinCell);
 
       myCell.innerText = myBoard[row][col];
-      opponentsCell.innerText = opponentsBoard[row][col];
+      myGuessinCell.innerText = myGuessinBoard[row][col];
     }
-    setAttributesToCell(elOpponentsBoard);
     elMyBoard.appendChild(myTr);
-    elOpponentsBoard.appendChild(opponentsTr);
+    elMyGuessingBoard.appendChild(myGuessinTr);
   }
-}
-
-function setAttributesToCell(elOpponentsBoard) {
-  for (var i = 0, row; (row = elOpponentsBoard.rows[i]); i++) {
-    for (var j = 0, col; (col = row.cells[j]); j++) {
-      if (LETTERS[i] === null || NUMBERS[j] === null) {
-        col.id = "null";
-      } else {
-        col.id = LETTERS[i] + NUMBERS[j];
-        col.className = "shipSpot";
-        col.addEventListener("click", checkIfSpot);
-      }
-    }
-  }
+  setAttributesToOppoppnentsCell(elMyGuessingBoard);
 }
 
 function createBattleship() {
@@ -87,7 +76,6 @@ function createBattleship() {
     let twoLenShip = document.createElement("div");
     twoLenShip.id = "twoLenShip";
     twoLenShip.className = "ship";
-    twoLenShip.setAttribute("draggable", true);
     battleships[0].appendChild(twoLenShip);
   }
 
@@ -95,24 +83,46 @@ function createBattleship() {
     let threeLenShip = document.createElement("div");
     threeLenShip.id = "threeLenShip";
     threeLenShip.className = "ship";
-    threeLenShip.setAttribute("draggable", true);
     battleships[0].appendChild(threeLenShip);
   }
 
   let fourLenShip = document.createElement("div");
   fourLenShip.id = "fourLenShip";
   fourLenShip.className = "ship";
-  fourLenShip.setAttribute("draggable", true);
   battleships[0].appendChild(fourLenShip);
 
   let fiveLenShip = document.createElement("div");
   fiveLenShip.id = "fiveLenShip";
   fiveLenShip.className = "ship";
-  fiveLenShip.setAttribute("draggable", true);
   battleships[0].appendChild(fiveLenShip);
 }
 
-createBoard();
+let shipsOnBoard = 0;
+
+function createReadyButton() {
+  if (shipsOnBoard === 8) {
+    let button = document.createElement("div");
+    button.id = "readyButton";
+    button.innerHTML = "ready";
+    document.body.appendChild(button);
+  }
+}
+
+function insertTurnButton() {
+  let turnButton = document.getElementById("turnButton");
+  turnButton.addEventListener("click", insertDirection);
+}
+
+function insertDirection() {
+  if (direction === "horizontal") {
+    direction = "vertical";
+  } else {
+    direction = "horizontal";
+  }
+}
+
+insertTurnButton();
 createElBoard();
 createBattleship();
 setClickToships();
+callSetAtt();

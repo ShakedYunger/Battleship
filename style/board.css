@@ -1,0 +1,36 @@
+#boards {
+  position: relative;
+  margin-top: 4em;
+  display: grid;
+  place-items: center;
+  min-width: 450px;
+  min-height: 450px;
+}
+
+td {
+  height: 35px;
+  width: 35px;
+  text-align: center;
+}
+
+#myBoard td {
+  background-color: rgba(92, 73, 48, 0.623);
+}
+
+#myGuessinBoard td {
+  background-color: white;
+  cursor: pointer;
+}
+
+#myGuessinBoard #hit {
+  background-color: red;
+  /* font-size: 8em; */
+}
+
+#myGuessinBoard #notHit {
+  background-color: rgb(125, 126, 123);
+}
+
+#null {
+  pointer-events: none;
+}
